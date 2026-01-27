@@ -30,18 +30,18 @@
 <h2>インターネット美学（internet aestheic）とは、その名の通り、インターネット発祥の画像や映像、音楽、ファッションなどのジャンルのこと。このアプリでは、簡単な質問に答えるだけで「あなたにぴったりなインターネット美学」を診断しちゃいます！</h2>
 <div class="question">
   <p>Q1. 今はどっちの気分？</p>
-  <button onclick="answer('cyber')">楽しいことしたい！</button>
-  <button onclick="answer('academia')">リラックスしたい！</button>
+  <button onclick="answer('frutiger','dream','y2k')">楽しいことしたい！</button>
+  <button onclick="answer('academia','clean')">リラックスしたい！</button>
 </div>
 <div class="question">
   <p>Q2. どっちの時間帯が好き？</p>
-  <button onclick="answer('y2k')">お昼</button>
-  <button onclick="answer('cyber')">深夜</button>
+  <button onclick="answer('frutiger','clean')">お昼</button>
+  <button onclick="answer('cyber','dream')">深夜</button>
 </div>
 <div class="question">
   <p>Q3. 落ち着く場所は？</p>
   <button onclick="answer('academia')">図書館</button>
-  <button onclick="answer('y2k')">ショッピングモール</button>
+  <button onclick="answer('y2k','cyber')">ショッピングモール</button>
 </div>
 
 <button onclick="showResult()">結果を見る</button>
@@ -50,7 +50,10 @@
 <script>
   const scores = {
     cyber: 0,
+    frutiger: 0,
     y2k: 0,
+    clean: 0,
+    dream: 0,
     academia: 0
   };
 
@@ -72,7 +75,10 @@
 
     const descriptions = {
       cyber: "🔮 Cyber Core：デジタル、ネオン、仮想世界が似合うあなた",
+      frutiger:" Frutiger Aero：さわやかで懐かしい近未来像",
       y2k: "💿 Y2K：2000年代のポップで未来的な美学がぴったり",
+      clean:"🧼 Clean Core：お風呂・お掃除・綺麗好き♪",
+      dream:"🛏  Dream Core：夢？現実？不思議な世界",
       academia: "📚 Dark Academia：知性と静けさを愛するクラシック派"
     };
 
