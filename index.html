@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>インターネット美学診断</title>
+  <style>
+    body {font-family: sans-serif;
+      background: #111;
+      color: #eee;
+      padding: 40px;}
+    .question {margin-bottom: 30px;}
+    button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      background: #222;
+      color: #eee;
+      border: 1px solid #555;
+      cursor: pointer;
+    }
+    button:hover {background: #444;}
+    #result {
+      margin-top: 40px;
+      font-size: 1.4em;
+    }
+  </style>
+</head>
+<body>
+
+<h1>あなたにおすすめのインターネット美学</h1>
+<h2>インターネット美学（internet aestheic）とは、その名の通り、インターネット発祥の画像や映像、音楽、ファッションなどのジャンルのこと。このアプリでは、簡単な質問に答えるだけで「あなたにぴったりなインターネット美学」を診断しちゃいます！</h2>
+<div class="question">
+  <p>Q1. 今はどっちの気分？</p>
+  <button onclick="answer('cyber')">楽しいことしたい！</button>
+  <button onclick="answer('academia')">リラックスしたい！</button>
+</div>
+<div class="question">
+  <p>Q2. どっちの時間帯が好き？</p>
+  <button onclick="answer('y2k')">お昼</button>
+  <button onclick="answer('cyber')">深夜</button>
+</div>
+<div class="question">
+  <p>Q3. 落ち着く場所は？</p>
+  <button onclick="answer('academia')">図書館</button>
+  <button onclick="answer('y2k')">ショッピングモール</button>
+</div>
+
+<button onclick="showResult()">結果を見る</button>
+<div id="result"></div>
+
+<script>
+  const scores = {
+    cyber: 0,
+    y2k: 0,
+    academia: 0
+  };
+
+  function answer(type) {
+    scores[type]++;
+    alert("回答を記録しました！");
+  }
+
+  function showResult() {
+    let bestType = '';
+    let maxScore = -1;
+
+    for (let type in scores) {
+      if (scores[type] > maxScore) {
+        maxScore = scores[type];
+        bestType = type;
+      }
+    }
+
+    const descriptions = {
+      cyber: "🔮 Cyber Core：デジタル、ネオン、仮想世界が似合うあなた",
+      y2k: "💿 Y2K：2000年代のポップで未来的な美学がぴったり",
+      academia: "📚 Dark Academia：知性と静けさを愛するクラシック派"
+    };
+
+    document.getElementById("result").textContent =
+      descriptions[bestType];}
+</script>
+</body>
+</html>
