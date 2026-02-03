@@ -80,46 +80,50 @@ function showResult() {
   if (counts.E > counts[resultType]) resultType = "E";
   if (counts.F > counts[resultType]) resultType = "F";
   const results = {
-    A: {title:"Frutiger Aero さわやかで懐かしい近未来",
+    A: {title:"【Frutiger Aero】さわやかで懐かしい近未来",
       description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
-      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-    },
-    B: {title: "Dream Core 夢？現実？不思議な世界",
+      image: "https://i.redd.it/wthjhx8t5nvc1.png"},
+    B: {title: "【Dream Core】 夢？現実？不思議な世界",
       description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
-      image: "https://images.unsplash.com/photo-1508780709619-79562169bc64"
-    },
-    C: {title: "Cyber Core 近未来感あふれる仮想世界",
+      image: "https://www.the-sun.com/wp-content/uploads/sites/6/2023/05/comp-skc-dream-op.jpg?strip=all&quality=100&w=1920&h=1080&crop=1"},
+    C: {title: "【Cyber Core】 近未来感あふれる仮想世界",
       description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
-      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-    },
+      image: "https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg"},
      D: {
-      title:"Dark Academia 重厚感と落ち着きの世界",
+      title:"【Dark Academia】 重厚感と落ち着きの世界",
       description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
-      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
-    },
+      image: "https://tse1.mm.bing.net/th/id/OIP.5xVYgOW6spgVaCZKlP22vAHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"},
     E: {
-      title:"Kid Core カラフルで楽しかった幼少期",
+      title:"【Kid Core】 カラフルで楽しかった幼少期",
       description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
-      image: "https://images.unsplash.com/photo-1508780709619-79562169bc64"
+      image: "https://wallpapercave.com/wp/wp7672874.jpg"
     },
     F: {
-      title:"Clean Core お風呂・お掃除・きれい好き♪",
+      title:"【Clean Core】 お風呂・お掃除・きれい好き♪",
       description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
-      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
-    }
+      image: "https://i.pinimg.com/736x/aa/37/e4/aa37e4f2516f7d541a6e9ca7c69d03df.jpg"}
   };
 const result = results[resultType];
-function showPopup(`
-  showPopup(`
-    <h2>診断結果</h2>
-    <p>ここに診断結果が表示されます！</p>
-  `);}
- <div id="overlay">
-  <div id="popup">
-    <div id="popupContent"></div>
-    <button onclick="closePopup()">閉じる</button>
-  </div>
-</div>
+  function showPopup(html) {
+  const overlay = document.getElementById("overlay");
+  const content = document.getElementById("popupContent");
+
+  content.innerHTML = html;
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.classList.add("show");
+  }, 50);
+}
+
+function closePopup() {
+  const overlay = document.getElementById("overlay");
+  overlay.classList.remove("show");
+
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 400);
+}
   </script>
 </body>
 </html>
