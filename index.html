@@ -2,94 +2,97 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>インターネット美学診断</title>
+  <title>インターネット美学おすすめ診断</title>
   <style>
-    body {font-family: sans-serif;
-      background: #111;
-      color: #eee;
-      padding: 40px;}
-    .question {margin-bottom: 30px;}
-    button {
-      margin-right: 10px;
-      padding: 10px 20px;
-      background: #222;
-      color: #eee;
-      border: 1px solid #555;
-      cursor: pointer;
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      line-height: 1.6;
     }
-    button:hover {background: #444;}
+    .question {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
     #result {
-      margin-top: 40px;
-      font-size: 1.4em;
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-<h1>あなたにおすすめのインターネット美学</h1>
-<h2>インターネット美学（internet aestheic）とは、その名の通り、インターネット発祥の画像や映像、音楽、ファッションなどのジャンルのこと。このアプリでは、簡単な質問に答えるだけで「あなたにぴったりなインターネット美学」を診断しちゃいます！</h2>
-<div class="question">
-  <p>Q1. 今はどっちの気分？</p>
-  <button onclick="answer('frutiger','dream','y2k')">楽しいことしたい！</button>
-  <button onclick="answer('academia','clean')">リラックスしたい！</button>
-</div>
-<div class="question">
-  <p>Q2. どっちの時間帯が好き？</p>
-  <button onclick="answer('frutiger','clean')">お昼</button>
-  <button onclick="answer('cyber','dream')">深夜</button>
-</div>
-<div class="question">
-  <p>Q3. 気分が落ち着くのは？</p>
-  <button onclick="answer('academia','clean')">読書中</button>
-  <button onclick="answer('y2k','cyber')">ネットサーフィン中</button>
-</div>
-<div class="question">
-  <p>Q4. 冒険してみたい？</p>
-  <button onclick="answer('dream','frutiger','cyber')">したい！</button>
-  <button onclick="answer('y2k','academia')">今は大丈夫かな</button>
-</div>
+<h1>あなたのタイプ診断</h1>
 
+<form id="quizForm">
 
-<button onclick="showResult()">結果を見る</button>
+  <div class="question">
+    <p>Q1. 休日はどう過ごす？</p>
+    <label><input type="radio" name="q1" value="A"> 外に出る</label><br>
+    <label><input type="radio" name="q1" value="B"> 家でのんびり</label><br>
+    <label><input type="radio" name="q1" value="C"> 気分次第</label>
+  </div>
+
+  <div class="question">
+    <p>Q2. 新しい環境は？</p>
+    <label><input type="radio" name="q2" value="A"> ワクワクする</label><br>
+    <label><input type="radio" name="q2" value="B"> 正直苦手</label><br>
+    <label><input type="radio" name="q2" value="C"> 慣れれば平気</label>
+  </div>
+
+  <div class="question">
+    <p>Q3. 友達からよく言われるのは？</p>
+    <label><input type="radio" name="q3" value="A"> 行動力ある</label><br>
+    <label><input type="radio" name="q3" value="B"> 落ち着いてる</label><br>
+    <label><input type="radio" name="q3" value="C"> マイペース</label>
+  </div>
+
+  <button type="button" onclick="showResult()">診断する</button>
+</form>
+
 <div id="result"></div>
 
 <script>
-  const scores = {
-    cyber: 0,
-    frutiger: 0,
-    y2k: 0,
-    clean: 0,
-    dream: 0,
-    academia: 0
+function showResult() {
+  const form = document.getElementById("quizForm");
+
+  const counts = {
+    A: 0,
+    B: 0,
+    C: 0
   };
 
-  function answer(type) {
-    scores[type]++;
-    alert("回答を記録しました！");
+  for (let i = 1; i <= 3; i++) {
+    const answer = form["q" + i].value;
+    if (!answer) {
+      alert("すべての質問に答えてください！");
+      return;
+    }
+    counts[answer]++;
   }
 
-  function showResult() {
-    let bestType = '';
-    let maxScore = -1;
+  // 一番多いタイプを判定
+  let resultType = "A";
+  if (counts.B > counts[resultType]) resultType = "B";
+  if (counts.C > counts[resultType]) resultType = "C";
 
-    for (let type in scores) {
-      if (scores[type] > maxScore) {
-        maxScore = scores[type];
-        bestType = type;
-      }
-    }
+  let resultText = "";
 
-    const descriptions = {
-      cyber: "🔮 Cyber Core：デジタル、ネオン、仮想世界が似合うあなた",
-      frutiger:" Frutiger Aero：さわやかで懐かしい近未来像",
-      y2k: "💿 Y2K：2000年代のポップで未来的な美学がぴったり",
-      clean:"🧼 Clean Core：お風呂・お掃除・綺麗好き♪",
-      dream:"🛏  Dream Core：夢？現実？不思議な世界",
-      academia: "📚 Dark Academia：知性と静けさを愛するクラシック派"
-    };
+  if (resultType === "A") {
+    resultText = "🅰️ タイプA：行動派でエネルギッシュ！";
+  } else if (resultType === "B") {
+    resultText = "🅱️ タイプB：慎重で安定志向タイプ。";
+  } else {
+    resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
+  }
 
-    document.getElementById("result").textContent =
-      descriptions[bestType];}
+  document.getElementById("result").textContent = resultText;
+}
 </script>
+
 </body>
 </html>
