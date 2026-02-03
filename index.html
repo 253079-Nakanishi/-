@@ -28,21 +28,21 @@
   </div>
 <div class="question">
     <p>Q2. 今はどこに行きたい気分？</p>
-    <label><input type="radio" name="q2" value="A"> 街の図書館</label><br>
-    <label><input type="radio" name="q2" value="B"> ショッピングモール</label><br>
-    <label><input type="radio" name="q2" value="C"> 深夜の公園</label>
+    <label><input type="radio" name="q2" value="C"> 街の図書館</label><br>
+    <label><input type="radio" name="q2" value="B",""> ショッピングモール</label><br>
+    <label><input type="radio" name="q2" value="","B"> 深夜の公園</label>
   </div>
 <div class="question">
     <p>Q3. 子供の頃ほしかったのは？</p>
-    <label><input type="radio" name="q3" value="A"> ゲーム機</label><br>
+    <label><input type="radio" name="q3" value="A","C"> ゲーム機</label><br>
     <label><input type="radio" name="q3" value="B"> 図鑑</label><br>
-    <label><input type="radio" name="q3" value="C"> キーホルダーやアクセサリー</label>
+    <label><input type="radio" name="q3" value="C","B"> キーホルダーやアクセサリー</label>
   </div>
 <div class="question">
     <p>Q3. どの時代に行ってみたい？</p>
-    <label><input type="radio" name="q4" value="A"> 数十年後の近未来</label><br>
+    <label><input type="radio" name="q4" value="A","C"> 数十年後の近未来</label><br>
     <label><input type="radio" name="q4" value="B"> 1970～90年代あたり</label><br>
-    <label><input type="radio" name="q4" value="C"> 人類が生まれる前の時代！</label>
+    <label><input type="radio" name="q4" value="C","B"> 人類が生まれる前の時代！</label>
   </div>
 <button type="button" onclick="showResult()">診断する</button>
 </form>
@@ -71,7 +71,7 @@ function showResult() {
   }
 
   // 一番多いタイプを判定
-  let resultType = "A";
+  if (counts.A > counts[resultType]) resultType = "A";
   if (counts.B > counts[resultType]) resultType = "B";
   if (counts.C > counts[resultType]) resultType = "C";
   if (counts.D > counts[resultType]) resultType = "D";
@@ -81,17 +81,17 @@ function showResult() {
   let resultText = "";
 
   if (resultType === "A") {
-    resultText = "🅰️ タイプA：行動派でエネルギッシュ！";
-  } else if (resultType === "B") {
-    resultText = "🅱️ タイプB：慎重で安定志向タイプ。";
-  } else if (resultType === "C") {
-    resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
-  } else if (resultType === "D") {
-    resultText = "🅾️ タイプD：自由でマイペースなタイプ。";
-  } else if (resultType === "E") {
-    resultText = "🅾️ タイプE：自由でマイペースなタイプ。";
-  } else if (resultType === "F") {
-    resultText = "🅾️ タイプF：自由でマイペースなタイプ。";
+    resultText = "Furutiger Aero さわやかで懐かしい近未来";
+  }if (resultType === "B") {
+    resultText = "Dream Core 夢？現実？不思議な世界";
+  }if (resultType === "C") {
+    resultText = "Cyber Core 近未来感あふれる仮想世界";
+  }if (resultType === "D") {
+    resultText = "Dark Academia 重厚感と落ち着きの世界";
+  }if (resultType === "E") {
+    resultText = "Kid Core カラフルで楽しかった幼少期";
+  }if (resultType === "F") {
+    resultText = "Clean Core お風呂・お掃除・きれい好き♪";
   }
 
   document.getElementById("result").textContent = resultText;
