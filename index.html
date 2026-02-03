@@ -22,21 +22,27 @@
 <form id="quizForm">
 <div class="question">
     <p>Q1. 休日はどう過ごす？</p>
-    <label><input type="radio" name="q1" value="A"> 外に出る</label><br>
-    <label><input type="radio" name="q1" value="B"> 家でのんびり</label><br>
-    <label><input type="radio" name="q1" value="C"> 気分次第</label>
+    <label><input type="radio" name="q1" value="A"> 友達と遊びに行く</label><br>
+    <label><input type="radio" name="q1" value="B"> 家でゴロゴロ</label><br>
+    <label><input type="radio" name="q1" value="C"> もっぱら仕事</label>
   </div>
 <div class="question">
-    <p>Q2. 新しい環境は？</p>
-    <label><input type="radio" name="q2" value="A"> ワクワクする</label><br>
-    <label><input type="radio" name="q2" value="B"> 正直苦手</label><br>
-    <label><input type="radio" name="q2" value="C"> 慣れれば平気</label>
+    <p>Q2. 今はどこに行きたい気分？</p>
+    <label><input type="radio" name="q2" value="A"> 街の図書館</label><br>
+    <label><input type="radio" name="q2" value="B"> ショッピングモール</label><br>
+    <label><input type="radio" name="q2" value="C"> 深夜の公園</label>
   </div>
 <div class="question">
-    <p>Q3. 友達からよく言われるのは？</p>
-    <label><input type="radio" name="q3" value="A"> 行動力ある</label><br>
-    <label><input type="radio" name="q3" value="B"> 落ち着いてる</label><br>
-    <label><input type="radio" name="q3" value="C"> マイペース</label>
+    <p>Q3. 子供の頃ほしかったのは？</p>
+    <label><input type="radio" name="q3" value="A"> ゲーム機</label><br>
+    <label><input type="radio" name="q3" value="B"> 図鑑</label><br>
+    <label><input type="radio" name="q3" value="C"> キーホルダーやアクセサリー</label>
+  </div>
+<div class="question">
+    <p>Q3. どの時代に行ってみたい？</p>
+    <label><input type="radio" name="q4" value="A"> 数十年後の近未来</label><br>
+    <label><input type="radio" name="q4" value="B"> 1970～90年代あたり</label><br>
+    <label><input type="radio" name="q4" value="C"> 人類が生まれる前の時代！</label>
   </div>
 <button type="button" onclick="showResult()">診断する</button>
 </form>
@@ -50,10 +56,13 @@ function showResult() {
   const counts = {
     A: 0,
     B: 0,
-    C: 0
+    C: 0,
+    D: 0,
+    E: 0,
+    F: 0,
   };
 
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     const answer = form["q" + i].value;
     if (!answer) {
       alert("すべての質問に答えてください！");
@@ -65,6 +74,9 @@ function showResult() {
   let resultType = "A";
   if (counts.B > counts[resultType]) resultType = "B";
   if (counts.C > counts[resultType]) resultType = "C";
+  if (counts.D > counts[resultType]) resultType = "D";
+  if (counts.E > counts[resultType]) resultType = "E";
+  if (counts.F > counts[resultType]) resultType = "F";
 
   let resultText = "";
 
@@ -72,7 +84,13 @@ function showResult() {
     resultText = "🅰️ タイプA：行動派でエネルギッシュ！";
   } else if (resultType === "B") {
     resultText = "🅱️ タイプB：慎重で安定志向タイプ。";
-  } else {
+  } else if{
+    resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
+  } else if{
+    resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
+  } else if{
+    resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
+  } else if{
     resultText = "🅾️ タイプC：自由でマイペースなタイプ。";
   }
 
