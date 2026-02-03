@@ -53,13 +53,17 @@
 </form>
 
 <div id="result"></div>
+<div id="overlay" style="display:none;">
+  <div id="popup">
+    <div id="popupContent"></div>
+    <button onclick="closePopup()">閉じる</button>
+  </div>
+</div>
 
 <script>
 function showResult() {
-    showPopup(`
-    <h2>診断結果</h2>
-    <p>ここまで来たの本当にすごい！</p>
-  `);
+  alert("showResult 呼ばれた！");
+  showPopup("テスト成功！！🎉");
   const form = document.getElementById("quizForm");
 
   const counts = {
@@ -107,8 +111,11 @@ function showResult() {
       description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
       image: "https://i.pinimg.com/736x/aa/37/e4/aa37e4f2516f7d541a6e9ca7c69d03df.jpg"}
   };
-const result = results[resultType];}
-  function showPopup(html) {
+const result = results[resultType];
+}
+
+function showPopup(html) {
+    alert("showPopup 入った！");
   const overlay = document.getElementById("overlay");
   const content = document.getElementById("popupContent");
 
@@ -132,7 +139,7 @@ if (!overlay || !content) {
     overlay.classList.add("show");
   }, 50);
 }
-
+  
 function closePopup() {
   const overlay = document.getElementById("overlay");
   overlay.classList.remove("show");
@@ -140,12 +147,6 @@ function closePopup() {
   setTimeout(() => {
     overlay.style.display = "none";
   }, 400);
-<div id="overlay">
-  <div id="popup">
-    <div id="popupContent"></div>
-    <button onclick="closePopup()">閉じる</button>
-  </div>
-</div>
 
   </script>
 </body>
