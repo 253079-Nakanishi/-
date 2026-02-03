@@ -4,54 +4,41 @@
   <meta charset="UTF-8">
   <title>インターネット美学おすすめ診断</title>
   <style>
-    body {
-      font-family: sans-serif;
+    body {font-family: sans-serif;
       max-width: 600px;
       margin: 40px auto;
-      line-height: 1.6;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-    #result {
-      margin-top: 30px;
+      line-height: 1.6;}
+    .question {margin-bottom: 20px;}
+    button {padding: 10px 20px;
+      font-size: 16px;}
+    #result {margin-top: 30px;
       font-size: 18px;
-      font-weight: bold;
-    }
+      font-weight: bold;}
   </style>
 </head>
+
 <body>
-
 <h1>あなたのタイプ診断</h1>
-
 <form id="quizForm">
-
-  <div class="question">
+<div class="question">
     <p>Q1. 休日はどう過ごす？</p>
     <label><input type="radio" name="q1" value="A"> 外に出る</label><br>
     <label><input type="radio" name="q1" value="B"> 家でのんびり</label><br>
     <label><input type="radio" name="q1" value="C"> 気分次第</label>
   </div>
-
-  <div class="question">
+<div class="question">
     <p>Q2. 新しい環境は？</p>
     <label><input type="radio" name="q2" value="A"> ワクワクする</label><br>
     <label><input type="radio" name="q2" value="B"> 正直苦手</label><br>
     <label><input type="radio" name="q2" value="C"> 慣れれば平気</label>
   </div>
-
-  <div class="question">
+<div class="question">
     <p>Q3. 友達からよく言われるのは？</p>
     <label><input type="radio" name="q3" value="A"> 行動力ある</label><br>
     <label><input type="radio" name="q3" value="B"> 落ち着いてる</label><br>
     <label><input type="radio" name="q3" value="C"> マイペース</label>
   </div>
-
-  <button type="button" onclick="showResult()">診断する</button>
+<button type="button" onclick="showResult()">診断する</button>
 </form>
 
 <div id="result"></div>
@@ -70,8 +57,7 @@ function showResult() {
     const answer = form["q" + i].value;
     if (!answer) {
       alert("すべての質問に答えてください！");
-      return;
-    }
+      return;}
     counts[answer]++;
   }
 
@@ -83,7 +69,8 @@ function showResult() {
   let resultText = "";
 
   if (resultType === "A") {
-    resultText = "🅰️ タイプA：行動派でエネルギッシュ！";
+    resultText = "🅰️ タイプA：行動派でエネルギッシュ！",
+       <img src="https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg" alt="サンプル画像"> ;
   } else if (resultType === "B") {
     resultText = "🅱️ タイプB：慎重で安定志向タイプ。";
   } else {
