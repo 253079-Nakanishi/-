@@ -56,6 +56,10 @@
 
 <script>
 function showResult() {
+    showPopup(`
+    <h2>診断結果</h2>
+    <p>ここまで来たの本当にすごい！</p>
+  `);
   const form = document.getElementById("quizForm");
 
   const counts = {
@@ -108,6 +112,19 @@ const result = results[resultType];}
   const overlay = document.getElementById("overlay");
   const content = document.getElementById("popupContent");
 
+if (!overlay || !content) {
+    alert("overlay / popupContent が見つからない");
+    return;
+  }
+
+  content.innerHTML = html;
+  overlay.style.display = "flex";
+
+  setTimeout(() => {
+    overlay.classList.add("show");
+  }, 50);
+}
+
   content.innerHTML = html;
   overlay.style.display = "flex";
 
@@ -123,6 +140,12 @@ function closePopup() {
   setTimeout(() => {
     overlay.style.display = "none";
   }, 400);
+<div id="overlay">
+  <div id="popup">
+    <div id="popupContent"></div>
+    <button onclick="closePopup()">閉じる</button>
+  </div>
+</div>
 
   </script>
 </body>
