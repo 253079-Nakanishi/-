@@ -1,5 +1,42 @@
 body {background-image: url("https://img.fril.jp/shop/3365367/l/3365367.jpg?1493952815");
- background-size: cover;
+  background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed;}
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+#popup {
+  background: white;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 16px;
+  text-align: center;
+
+  transform: scale(0.7);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+#overlay.show #popup {
+  transform: scale(1);
+  opacity: 1;
+}
+
+#popup img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+#popup button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
 }
