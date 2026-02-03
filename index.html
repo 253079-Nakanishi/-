@@ -14,35 +14,40 @@
     #result {margin-top: 30px;
       font-size: 18px;
       font-weight: bold;}
+    #result img {
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 8px;}
   </style>
 </head>
 
 <body>
-<h1>あなたのタイプ診断</h1>
+<h1>✨インターネット美学おすすめ診断✨</h1>
+<p>インターネット美学とは、その名の通り「インターネット上で生まれた、画像・映像・音楽・ファッションのジャンル」のこと。このアプリでは、簡単な質問に答えるだけで、あなたにぴったりなジャンルを診断できちゃいます！</p><br>
 <form id="quizForm">
 <div class="question">
     <p>Q1. 休日はどう過ごす？</p>
-    <label><input type="radio" name="q1" value="A"> 友達と遊びに行く</label><br>
-    <label><input type="radio" name="q1" value="B"> 家でゴロゴロ</label><br>
-    <label><input type="radio" name="q1" value="C"> もっぱら仕事</label>
+    <label><input type="radio" name="q1" value="A","E"> 友達と遊びに行く</label><br>
+    <label><input type="radio" name="q1" value="B","F"> 家でゴロゴロ</label><br>
+    <label><input type="radio" name="q1" value="C","D"> もっぱら仕事</label>
   </div>
 <div class="question">
     <p>Q2. 今はどこに行きたい気分？</p>
-    <label><input type="radio" name="q2" value="C"> 街の図書館</label><br>
-    <label><input type="radio" name="q2" value="B",""> ショッピングモール</label><br>
-    <label><input type="radio" name="q2" value="","B"> 深夜の公園</label>
+    <label><input type="radio" name="q2" value="C","D"> 街の図書館</label><br>
+    <label><input type="radio" name="q2" value="A","F"> ショッピングモール</label><br>
+    <label><input type="radio" name="q2" value="E","B"> 深夜の公園</label>
   </div>
 <div class="question">
     <p>Q3. 子供の頃ほしかったのは？</p>
     <label><input type="radio" name="q3" value="A","C"> ゲーム機</label><br>
-    <label><input type="radio" name="q3" value="B"> 図鑑</label><br>
-    <label><input type="radio" name="q3" value="C","B"> キーホルダーやアクセサリー</label>
+    <label><input type="radio" name="q3" value="F","D"> 図鑑</label><br>
+    <label><input type="radio" name="q3" value="E","B"> キーホルダーやアクセサリー</label>
   </div>
 <div class="question">
-    <p>Q3. どの時代に行ってみたい？</p>
+    <p>Q4. どの時代に行ってみたい？</p>
     <label><input type="radio" name="q4" value="A","C"> 数十年後の近未来</label><br>
-    <label><input type="radio" name="q4" value="B"> 1970～90年代あたり</label><br>
-    <label><input type="radio" name="q4" value="C","B"> 人類が生まれる前の時代！</label>
+    <label><input type="radio" name="q4" value="B","F"> 1970～90年代あたり</label><br>
+    <label><input type="radio" name="q4" value="C","D"> 人類が生まれる前の時代！</label>
   </div>
 <button type="button" onclick="showResult()">診断する</button>
 </form>
@@ -65,38 +70,56 @@ function showResult() {
   for (let i = 1; i <= 4; i++) {
     const answer = form["q" + i].value;
     if (!answer) {
-      alert("すべての質問に答えてください！");
+      alert("まだ答えていない質問があるみたい");
       return;}
-    counts[answer]++;
-  }
-
-  // 一番多いタイプを判定
-  if (counts.A > counts[resultType]) resultType = "A";
+    counts[answer]++;}
+  let resultType = "A";
   if (counts.B > counts[resultType]) resultType = "B";
   if (counts.C > counts[resultType]) resultType = "C";
   if (counts.D > counts[resultType]) resultType = "D";
   if (counts.E > counts[resultType]) resultType = "E";
   if (counts.F > counts[resultType]) resultType = "F";
-
-  let resultText = "";
-
-  if (resultType === "A") {
-    resultText = "Furutiger Aero さわやかで懐かしい近未来";
-  }if (resultType === "B") {
-    resultText = "Dream Core 夢？現実？不思議な世界";
-  }if (resultType === "C") {
-    resultText = "Cyber Core 近未来感あふれる仮想世界";
-  }if (resultType === "D") {
-    resultText = "Dark Academia 重厚感と落ち着きの世界";
-  }if (resultType === "E") {
-    resultText = "Kid Core カラフルで楽しかった幼少期";
-  }if (resultType === "F") {
-    resultText = "Clean Core お風呂・お掃除・きれい好き♪";
-  }
-
-  document.getElementById("result").textContent = resultText;
-}
-</script>
-
+  const results = {
+    A: {title:"Frutiger Aero さわやかで懐かしい近未来",
+      description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    },
+    B: {title: "Dream Core 夢？現実？不思議な世界",
+      description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
+      image: "https://images.unsplash.com/photo-1508780709619-79562169bc64"
+    },
+    C: {title: "Cyber Core 近未来感あふれる仮想世界",
+      description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+    },
+     D: {
+      title:"Dark Academia 重厚感と落ち着きの世界",
+      description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
+      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee"
+    },
+    E: {
+      title:"Kid Core カラフルで楽しかった幼少期",
+      description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
+      image: "https://images.unsplash.com/photo-1508780709619-79562169bc64"
+    },
+    F: {
+      title:"Clean Core お風呂・お掃除・きれい好き♪",
+      description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
+      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+    }
+  };
+const result = results[resultType];
+function showPopup(`
+  showPopup(`
+    <h2>診断結果</h2>
+    <p>ここに診断結果が表示されます！</p>
+  `);}
+ <div id="overlay">
+  <div id="popup">
+    <div id="popupContent"></div>
+    <button onclick="closePopup()">閉じる</button>
+  </div>
+</div>
+  </script>
 </body>
 </html>
