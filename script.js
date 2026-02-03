@@ -1,3 +1,10 @@
+function showResult() {
+  showPopup(`
+    <h2>診断結果</h2>
+    <p>ついに動いた！！！🎉</p>
+  `);
+}
+
 function showPopup(html) {
   const overlay = document.getElementById("overlay");
   const content = document.getElementById("popupContent");
@@ -5,7 +12,7 @@ function showPopup(html) {
   content.innerHTML = html;
   overlay.style.display = "flex";
 
-  setTimeout(()=> {
+setTimeout(() => {
     overlay.classList.add("show");
   }, 50);
 }
