@@ -1,13 +1,23 @@
 function showResult() {
-  showPopup(`
-    <h2>診断結果</h2>
-    <p>ついに動いた！！！🎉</p>
-  `);
+   alert("showResult 呼ばれた！");
+  const result = results[resultType];
+showPopup(`
+  <h2>${result.title}</h2>
+  <p>${result.description}</p>
+  <img src="${result.image}" alt="">
+`);
 }
 
 function showPopup(html) {
+   alert("showPopup 入った！");
+  showPopup("ここまで来てる！");
+
   const overlay = document.getElementById("overlay");
   const content = document.getElementById("popupContent");
+if (!overlay || !content) {
+    alert("overlay か popupContent が見つからない！");
+    return;
+  }
 
   content.innerHTML = html;
   overlay.style.display = "flex";
