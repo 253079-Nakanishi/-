@@ -1,59 +1,72 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>インターネット美学おすすめ診断</title>
-  <style>
-    body {font-family: sans-serif;
-      max-width: 600px;
+<meta charset="UTF-8">
+<title>簡単診断アプリ</title>
+<style>
+  body {
+    font-family: sans-serif;
+          max-width: 700px;
       margin: 40px auto;
-      line-height: 1.6;}
-    .question {margin-bottom: 20px;}
-    button {padding: 10px 20px;
-      font-size: 16px;}
-    #result {margin-top: 30px;
-      font-size: 18px;
-      font-weight: bold;}
-    #result img {
-      max-width: 100%;
-      margin-top: 15px;
-      border-radius: 8px;}
-  </style>
-</head>
+      line-height: 1.5;}
+    padding: 20px;
+  }
+  h1 { text-align:center; }
 
+  #overlay {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  #popupContent {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+  }
+  #popupContent img {
+    max-width: 100%;
+    margin-top: 10px;
+  }
+  button { margin-top: 10px; padding: 10px 20px; }
+</style>
+</head>
 <body>
-<h1>✨インターネット美学おすすめ診断✨</h1>
-<p>インターネット美学とは、その名の通り「インターネット上で生まれた、画像・映像・音楽・ファッションのジャンル」のこと。このアプリでは、簡単な質問に答えるだけで、あなたにぴったりなジャンルを診断できちゃいます！</p><br>
+
+<h1>簡単診断アプリ</h1>
+  <p>インターネット美学とは、その名の通り「インターネット上で生まれた、画像・映像・音楽・ファッションのジャンル」のこと。このアプリでは、簡単な質問に答えるだけで、あなたにぴったりなジャンルを診断できちゃいます！</p><br>
+
 <form id="quizForm">
-<div class="question">
-    <p>Q1. 休日はどう過ごす？</p>
-    <label><input type="radio" name="q1" value="A","E"> 友達と遊びに行く</label><br>
-    <label><input type="radio" name="q1" value="B","F"> 家でゴロゴロ</label><br>
-    <label><input type="radio" name="q1" value="C","D"> もっぱら仕事</label>
-  </div>
-<div class="question">
-    <p>Q2. 今はどこに行きたい気分？</p>
-    <label><input type="radio" name="q2" value="C","D"> 街の図書館</label><br>
-    <label><input type="radio" name="q2" value="A","F"> ショッピングモール</label><br>
-    <label><input type="radio" name="q2" value="E","B"> 深夜の公園</label>
-  </div>
-<div class="question">
-    <p>Q3. 子供の頃ほしかったのは？</p>
-    <label><input type="radio" name="q3" value="A","C"> ゲーム機</label><br>
-    <label><input type="radio" name="q3" value="F","D"> 図鑑</label><br>
-    <label><input type="radio" name="q3" value="E","B"> キーホルダーやアクセサリー</label>
-  </div>
-<div class="question">
-    <p>Q4. どの時代に行ってみたい？</p>
-    <label><input type="radio" name="q4" value="A","C"> 数十年後の近未来</label><br>
-    <label><input type="radio" name="q4" value="B","F"> 1970～90年代あたり</label><br>
-    <label><input type="radio" name="q4" value="C","D"> 人類が生まれる前の時代！</label>
-  </div>
-<button type="button" onclick="showResult()">診断する</button>
+  <p>Q1: 休日の過ごし方は？</p>
+  <input type="radio" name="q1" value="A"> 友達と遊ぶ　
+  <input type="radio" name="q1" value="B"> 家でゴロゴロ　
+  <input type="radio" name="q1" value="C"> もっぱら仕事…
+
+  <p>Q2: 今はどこに行きたい気分？</p>
+  <input type="radio" name="q2" value="A"> ショッピングモール　
+  <input type="radio" name="q2" value="B"> 静かな図書館　
+  <input type="radio" name="q2" value="C"> 深夜の公園
+
+  <p>Q3: 子供の頃にほしかったのは？</p>
+  <input type="radio" name="q3" value="A"> 流行りのゲーム　
+  <input type="radio" name="q3" value="B"> 図鑑　
+  <input type="radio" name="q3" value="C"> キーホルダーや文房具
+
+  <p>Q4: タイムスリップするならどの時代に行く？</p>
+  <input type="radio" name="q4" value="A"> 数十年後の近未来　
+  <input type="radio" name="q4" value="B"> 70～90年代あたり　
+  <input type="radio" name="q4" value="C"> 人類が生まれる前の時代！
 </form>
 
-<div id="result"></div>
-<div id="overlay" style="display:none;">
+<button onclick="showResult()">診断する！</button>
+
+<div id="overlay">
   <div id="popup">
     <div id="popupContent"></div>
     <button onclick="closePopup()">閉じる</button>
@@ -62,92 +75,50 @@
 
 <script>
 function showResult() {
-  alert("showResult 呼ばれた！");
-  showPopup("テスト成功！！🎉");
   const form = document.getElementById("quizForm");
+  const counts = { A:0, B:0, C:0 };
 
-  const counts = {
-    A: 0,
-    B: 0,
-    C: 0,
-    D: 0,
-    E: 0,
-    F: 0,
-  };
-
-  for (let i = 1; i <= 4; i++) {
-    const answer = form["q" + i].value;
+  for (let i=1; i<=4; i++) {
+    const answer = form["q"+i].value;
     if (!answer) {
       alert("まだ答えていない質問があるみたい");
-      return;}
-    counts[answer]++;}
+      return;
+    }
+    counts[answer]++;
+  }
+
   let resultType = "A";
   if (counts.B > counts[resultType]) resultType = "B";
   if (counts.C > counts[resultType]) resultType = "C";
-  if (counts.D > counts[resultType]) resultType = "D";
-  if (counts.E > counts[resultType]) resultType = "E";
-  if (counts.F > counts[resultType]) resultType = "F";
+
   const results = {
-    A: {title:"【Frutiger Aero】さわやかで懐かしい近未来",
-      description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
-      image: "https://i.redd.it/wthjhx8t5nvc1.png"},
-    B: {title: "【Dream Core】 夢？現実？不思議な世界",
-      description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
-      image: "https://www.the-sun.com/wp-content/uploads/sites/6/2023/05/comp-skc-dream-op.jpg?strip=all&quality=100&w=1920&h=1080&crop=1"},
-    C: {title: "【Cyber Core】 近未来感あふれる仮想世界",
-      description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
-      image: "https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg"},
-     D: {
-      title:"【Dark Academia】 重厚感と落ち着きの世界",
-      description: "好奇心旺盛で行動力があり、新しい世界に飛び込むのが得意なタイプです。",
-      image: "https://tse1.mm.bing.net/th/id/OIP.5xVYgOW6spgVaCZKlP22vAHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"},
-    E: {
-      title:"【Kid Core】 カラフルで楽しかった幼少期",
-      description: "慎重で落ち着きがあり、安心できる環境を大切にするタイプです。",
-      image: "https://wallpapercave.com/wp/wp7672874.jpg"
-    },
-    F: {
-      title:"【Clean Core】 お風呂・お掃除・きれい好き♪",
-      description: "自分の感覚を大切にし、自由な発想で生きるタイプです。",
-      image: "https://i.pinimg.com/736x/aa/37/e4/aa37e4f2516f7d541a6e9ca7c69d03df.jpg"}
+    A: {title:"Frutiger Aero", description:"好奇心旺盛で行動力あり！", image:"https://i.redd.it/wthjhx8t5nvc1.png"},
+    B: {title:"Dream Core", description:"落ち着き重視タイプ", image:"https://www.the-sun.com/wp-content/uploads/sites/6/2023/05/comp-skc-dream-op.jpg?strip=all&quality=100&w=1920&h=1080&crop=1"},
+    C: {title:"Cyber Core", description:"自由で創造的タイプ", image:"https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg"}
   };
-const result = results[resultType];
+
+  const result = results[resultType];
+
+  showPopup(`
+    <h2>${result.title}</h2>
+    <p>${result.description}</p>
+    <img src="${result.image}" alt="">
+  `);
 }
 
 function showPopup(html) {
-    alert("showPopup 入った！");
   const overlay = document.getElementById("overlay");
-  const content = document.getElementById("popupContent");
-
-if (!overlay || !content) {
-    alert("overlay / popupContent が見つからない");
-    return;
-  }
+  const content = document.getElementById("popup");
 
   content.innerHTML = html;
   overlay.style.display = "flex";
-
-  setTimeout(() => {
-    overlay.classList.add("show");
-  }, 50);
 }
-
-  content.innerHTML = html;
-  overlay.style.display = "flex";
-
-  setTimeout(() => {
-    overlay.classList.add("show");
-  }, 50);
-}
-  
 function closePopup() {
-  const overlay = document.getElementById("overlay");
-  overlay.classList.remove("show");
+  document.getElementById("overlay").style.display = "none";
+}
 
-  setTimeout(() => {
-    overlay.style.display = "none";
-  }, 400);
+}
+</script>
 
-  </script>
 </body>
 </html>
