@@ -32,7 +32,7 @@ function showResult() {
     C: {
       title: "Cyber Core",
       description: "自由で創造的タイプ",
-      image: "https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg"
+      image: "https://wallpapers.com/images/hd/blue-cybercore-collage-y2-k-aesthetic-pw4dcgpb3ehsxrci.jpg"
     }
   };
 
