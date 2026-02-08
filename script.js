@@ -16,7 +16,7 @@ function showResult() {
 
   let resultType = "A";
   if (counts.B > counts[resultType]) resultType = "B";
-　if (counts.C > counts[resultType]) resultType = "C";
+  if (counts.C > counts[resultType]) resultType = "C";
 
   const results = {
     A: {
