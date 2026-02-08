@@ -11,7 +11,7 @@ function showResult() {
       return;
     }
 
-    counts[checked.value]++;
+   counts[checked.value]++;
   }
 
   let resultType = "A";
