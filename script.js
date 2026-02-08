@@ -29,6 +29,7 @@ function showResult() {
   currentImages = result.images;
 currentImageIndex = 0;
 showPopup(`
+    <p style="font-weight:bold;">あなたにぴったりなのは…</p>
     <h2>${result.title}</h2>
     <p>${result.description}</p>
     <img id="resultImage" src="${currentImages[0]}" alt="" onclick="nextImage()" style="cursor:pointer;">
@@ -49,7 +50,6 @@ function launchConfetti() {
 }
 
 function showPopup(html) {
-   alert("あなたにぴったりなのは…");
 
   const overlay = document.getElementById("overlay");
   const content = document.getElementById("popupContent");
