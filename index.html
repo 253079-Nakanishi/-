@@ -6,14 +6,7 @@
 <style>
 <link rel="stylesheet" href="style.css">
 <script src="script.js"></script>
-  body {
-    font-family: sans-serif;
-          max-width: 700px;
-      margin: 40px auto;
-      line-height: 1.5;}
-    padding: 20px;
-  }
-  h1 { text-align:center; }
+ h1 { text-align:center; }
 
   #overlay {
     display: none;
@@ -25,6 +18,7 @@
     justify-content: center;
     align-items: center;
   }
+  
   #popupContent {
     background: #fff;
     padding: 20px;
@@ -41,8 +35,8 @@
 </head>
 <body>
 
-<h1>簡単診断アプリ</h1>
-  <p>インターネット美学とは、その名の通り「インターネット上で生まれた、画像・映像・音楽・ファッションのジャンル」のこと。このアプリでは、簡単な質問に答えるだけで、あなたにぴったりなジャンルを診断できちゃいます！</p><br>
+<h1>✨おすすめインターネット美学診断アプリ✨</h1>
+  <p>インターネット美学とは、その名の通り「ネット上で生まれた、画像・映像・音楽・ファッションのジャンル」のこと。</p><p>このアプリでは、簡単な質問に答えるだけで、あなたにぴったりなジャンルを診断できちゃいます！</p><p>どこか懐かしい雰囲気のジャンルが多いので、平成レトロやY2K好きな方にオススメです♪</p><p>診断された壁紙やファッションを取り入れて、日常をさらに楽しく、魅力的にしてみましょう✨</p><br>
 
 <form id="quizForm">
   <p>Q1: 休日の過ごし方は？</p>
@@ -74,53 +68,5 @@
     <button onclick="closePopup()">閉じる</button>
   </div>
 </div>
-
-<script>
-function showResult() {
-  const form = document.getElementById("quizForm");
-  const counts = { A:0, B:0, C:0 };
-
-  for (let i=1; i<=4; i++) {
-    const answer = form["q"+i].value;
-    if (!answer) {
-      alert("まだ答えていない質問があるみたい");
-      return;
-    }
-    counts[answer]++;
-  }
-
-  let resultType = "A";
-  if (counts.B > counts[resultType]) resultType = "B";
-  if (counts.C > counts[resultType]) resultType = "C";
-
-  const results = {
-    A: {title:"Frutiger Aero", description:"好奇心旺盛で行動力あり！", image:"https://i.redd.it/wthjhx8t5nvc1.png"},
-    B: {title:"Dream Core", description:"落ち着き重視タイプ", image:"https://www.the-sun.com/wp-content/uploads/sites/6/2023/05/comp-skc-dream-op.jpg?strip=all&quality=100&w=1920&h=1080&crop=1"},
-    C: {title:"Cyber Core", description:"自由で創造的タイプ", image:"https://i.pinimg.com/originals/be/74/e8/be74e88d93805394c4f8d7636fad62e7.jpg"}
-  };
-
-  const result = results[resultType];
-
-  showPopup(`
-    <h2>${result.title}</h2>
-    <p>${result.description}</p>
-    <img src="${result.image}" alt="">
-  `);
-}
-
-function showPopup(html) {
-  const overlay = document.getElementById("overlay");
-  const content = document.getElementById("popup");
-
-  content.innerHTML = html;
-  overlay.style.display = "flex";
-}
-function closePopup() {
-  document.getElementById("overlay").style.display = "none";
-}
-
-}
-</script>
-
 </body>
 </html>
