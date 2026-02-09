@@ -11,8 +11,8 @@ body {background-image: url("https://img.fril.jp/shop/3365367/l/3365367.jpg?1493
 #popup {
   background: white;
   padding: 30px;
-  max-width: 500px;
-  width: 90%;
+  max-width: 550px;
+  width: 100%;
   border-radius: 16px;
   text-align: center;
   transform: translateY(20px);
