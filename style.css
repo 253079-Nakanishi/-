@@ -2,7 +2,8 @@ body {background-image: url("https://img.fril.jp/shop/3365367/l/3365367.jpg?1493
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  text-align: center;}
+  text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;}
 
 #overlay.active {
   opacity: 1;
