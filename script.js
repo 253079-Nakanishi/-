@@ -18,7 +18,7 @@ function showResult() {
   }
 
   const results = [
-    {min: 3, max: 4, title: "【Cyber Core】⚙️ホログラムと銀色の世界", description: "クールで知的な性格のあなたには、Cyber Core（サイバーコア）がおすすめ！このインターネット美学は、青や白、銀色などの冷たい色使いと、コンピューターの画面や2000年のアニメキャラといったモチーフが特徴的です。シャープな近未来らしさの中に、不思議と懐かしさや温もりがあるのが、このジャンルに沼ってしまうポイントです！", images: ["https://tse4.mm.bing.net/th/id/OIP.pbXCXCp3sUkA_P6LDIu9FQHaEK?w=1280&h=720&rs=1&pid=ImgDetMain&o=7&rm=3","https://wallpapercave.com/wp/wp10547211.png","https://i.pinimg.com/originals/0b/48/00/0b480031634de59cea9d3d092f10ca21.jpg"]},
+    {min: 3, max: 4, title: "【Cyber Core】⚙️ホログラムと銀色の世界", description: "クールで知的な性格のあなたには、Cyber Core（サイバーコア）がおすすめ！このインターネット美学は、青や白、銀色などの冷たい色使いと、コンピューターの画面や2000年代のアニメキャラといったモチーフが特徴的です。シャープな近未来らしさの中に、不思議と懐かしさや温もりがあるのが、このジャンルに沼ってしまうポイントです！", images: ["https://tse4.mm.bing.net/th/id/OIP.pbXCXCp3sUkA_P6LDIu9FQHaEK?w=1280&h=720&rs=1&pid=ImgDetMain&o=7&rm=3","https://wallpapercave.com/wp/wp10547211.png","https://i.pinimg.com/originals/0b/48/00/0b480031634de59cea9d3d092f10ca21.jpg"]},
     
     {min: 5, max: 5, title: "【Dark Academia】📖クラシカルな図書館", description: "じっくり作業に打ち込むのが好きなあなたには、Dark Academia（ダークアカデミア）がおすすめ！このインターネット美学は、ヨーロッパの伝統的な図書館や大学をイメージしています。重厚感とミステリアスな雰囲気が最大のポイントで、ハリポタや異世界ものがお好きな方は「きゃっほー！！」ってなること間違いなし。", images: ["https://wallpaperaccess.com/full/5652433.jpg","https://assets.st-note.com/img/1695454783568-h0mxraSNwn.jpg","https://wallpapers.com/images/hd/fantastic-dark-academia-t1zzzi8ev3p7s4g2.jpg"]},
     
